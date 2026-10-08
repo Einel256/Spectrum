@@ -1,0 +1,9 @@
+#!/bin/sh
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+PROJECT_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+SCRIPT_PATH="$PROJECT_ROOT/spectrum.py"
+if [ ! -f "$SCRIPT_PATH" ]; then
+    echo "spectrum: cannot find spectrum.py" >&2
+    exit 1
+fi
+exec python3 "$SCRIPT_PATH" "$@"
